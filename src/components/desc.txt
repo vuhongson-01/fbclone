@@ -1,0 +1,1 @@
+cac components dung chung va cac component can cho moi screen duoc su dung trong app
