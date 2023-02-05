@@ -1,62 +1,109 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  StyleSheet,
-  Image,
-  ScrollView,
-} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import PersonalProfileHeader from '../../components/personal-profile/persional-profile-header';
-import FriendList from '../../components/friend-list';
-import Layout from '../../components/layout/layout';
-import UpPost from '../../components/up-post';
-import InfoView from '../../components/personal-profile/personal-info';
-import Feed from '../../components/khang_components/Feed';
 import UserService from '../../helper/services/UserService';
-import FriendService from '../../helper/services/FriendService';
+import {faCircleExclamation} from '@fortawesome/free-solid-svg-icons/faCircleExclamation';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {useEffect, useState} from 'react';
+import {Text, View} from 'react-native';
+import {useSelector} from 'react-redux';
+import ListFriendComponent from '../../components/friends/list/ListFriendComponent';
+import PersonalProfile from '../../components/personal-profile';
+import UpdateInfoComponent from '../../components/personal-profile/update-info';
+import {selectAuth} from '../../store/auth/authSlice';
+import {COLOR} from '../../constants/constants';
 
-const PersonalProfileScreen = ({navigation, routes}) => {
-  const [list_friend, setListFriend] = useState([]);
-  const [userInfo, setUserInfo] = useState({});
+const ProfileStack = createNativeStackNavigator();
 
+const UpdateInfoScreen = ({route, navigation}) => {
+  return <UpdateInfoComponent userId={route.params.userInfo._id} />;
+};
+const AnotherProfileScreen = ({route, navigation}) => {
+  const [blockDiary, setBlockDiary] = useState(false);
   useEffect(() => {
-    UserService.get('639d85f7658d870d64fc9656').then(res => {
-      console.log(res.data.data);
-      setUserInfo(res.data.data);
-    });
-    FriendService.getFriends().then(res => {
-      console.log(res.data.data);
-      setListFriend(res.data.data);
-    });
+    UserService.getCurrentUser()
+      .then(res => {
+        let block = res.data.data.blocked_diary?.includes(route.params.userId);
+        if (block) {
+          navigation.setOptions({title: 'Không thể truy cập'});
+        }
+        setBlockDiary(block);
+      })
+      .catch(error => {
+        Notification.showErrorMessage(
+          'Đã xảy ra lỗi khi lấy thông tin người dùng',
+        );
+      });
   }, []);
+  return blockDiary ? (
+    <View
+      style={{
+        width: '100%',
+        height: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'rgba(33,33,33,0.5)',
+      }}>
+      <FontAwesomeIcon icon={faCircleExclamation} color={COLOR.mainWhite} />
+      <Text>Không thể truy cập</Text>
+    </View>
+  ) : (
+    <PersonalProfile userId={route.params.userId} navigation={navigation} />
+  );
+};
+const MainScreen = ({navigation}) => {
+  const {user} = useSelector(selectAuth);
+  return <PersonalProfile userId={user._id} navigation={navigation} />;
+};
 
+const FriendListScreen = ({navigation}) => {
+  return <ListFriendComponent />;
+};
+
+const ProfileScreen = ({route, navigation}) => {
+  let id = route.params.userId;
+  const {user} = useSelector(selectAuth);
   return (
-    <SafeAreaView>
-      <ScrollView>
-        <Layout navigation={navigation}>
-          <PersonalProfileHeader userInfo={userInfo} />
-          <InfoView userInfo={userInfo} />
-          <FriendList data={list_friend.friends} />
-          <View style={[styles.blank, {height: 24}]} />
-          {/* <UpPost userInfo={userInfo} /> */}
-          {/* <View style={[styles.blank, {height: 12}]} /> */}
-          <Feed />
-        </Layout>
-      </ScrollView>
-    </SafeAreaView>
+    <ProfileStack.Navigator
+      initialRouteName={
+        id === user._id ? 'MainScreen' : 'AnotherProfileScreen'
+      }>
+      <ProfileStack.Screen
+        name="MainScreen"
+        component={MainScreen}
+        options={{
+          tabBarStyle: {display: 'none'},
+          headerTitleAlign: 'center',
+        }}
+      />
+      <ProfileStack.Screen
+        name="UpdateInfoScreen"
+        component={UpdateInfoScreen}
+        options={{
+          tabBarStyle: {display: 'none'},
+          title: 'Sửa thông tin',
+          headerTitleAlign: 'center',
+        }}
+      />
+      <ProfileStack.Screen
+        name="AnotherProfileScreen"
+        component={AnotherProfileScreen}
+        initialParams={{userId: id}}
+        options={{
+          tabBarStyle: {display: 'none'},
+          headerTitleAlign: 'center',
+        }}
+      />
+      <ProfileStack.Screen
+        name="FriendListScreen"
+        component={FriendListScreen}
+        initialParams={{userId: id}}
+        options={{
+          tabBarStyle: {display: 'none'},
+          headerTitleAlign: 'center',
+          title: 'Danh sách bạn bè',
+        }}
+      />
+    </ProfileStack.Navigator>
   );
 };
 
-const styles = StyleSheet.create({
-  description: {
-    color: '#2f2f2f',
-    fontSize: 16,
-  },
-  blank: {
-    backgroundColor: '#b9b9b9',
-    // paddingHorizontal: 16,
-  },
-});
-
-export default PersonalProfileScreen;
+export default ProfileScreen;

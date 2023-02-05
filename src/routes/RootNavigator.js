@@ -19,7 +19,7 @@ import Init from '../views/Init';
 // import Message from '../views/Chat/Message';
 // import NewConversation from '../views/Chat/NewConversation';
 // import {UploadImage} from '../test/upload';
-// import ProfileScreen from '../views/personal-profile';
+import ProfileScreen from '../views/personal-profile';
 // import DetailPost from '../components/detail_post';
 // import Homepage from '../views/HomePage';
 
@@ -32,7 +32,7 @@ const RootNavigator = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="LogIn">
+      <Stack.Navigator initialRouteName="Init">
         {/* <Stack.Screen name="HomePage" component={Homepage} options={options} /> */}
         <Stack.Screen name="Init" component={Init} options={options} />
         {/* <Stack.Screen
@@ -81,12 +81,12 @@ const RootNavigator = () => {
           name="DetailPost"
           component={DetailPost}
           options={options}
-        />
+        />*/}
         <Stack.Screen
           name="ProfileScreen"
           component={ProfileScreen}
           options={options}
-        /> */}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

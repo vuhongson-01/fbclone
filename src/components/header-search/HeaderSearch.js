@@ -1,29 +1,28 @@
-import {View, Text, StyleSheet, TouchableHighlight} from 'react-native';
-import React from 'react';
-import ArrowLeftIcon from '../../../assets/icon/ArrowLeftIcon';
+import {COLOR} from '../../constants/constants';
+import {faArrowLeft} from '@fortawesome/free-solid-svg-icons/faArrowLeft';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {StyleSheet, TouchableHighlight, View} from 'react-native';
+import InputBar from '../input-bar';
 
-const HeaderSearch = ({navigation}) => {
+const HeaderSearch = ({setSearchKeyword, actionFn}) => {
   return (
     <View style={styles.container}>
       <TouchableHighlight
-        underlayColor={'#e1e1e1'}
+        underlayColor={COLOR.mainGraySmoke}
         onPress={() => {
-          navigation.goBack();
+          // navigation.goBack();
         }}
         style={{
           padding: 12,
           borderRadius: 32,
         }}>
-        <ArrowLeftIcon />
+        <FontAwesomeIcon icon={faArrowLeft} />
       </TouchableHighlight>
-      <TouchableHighlight underlayColor={'#e1e1e1'} style={styles.searchBar}>
-        <Text
-          style={{
-            fontSize: 16,
-          }}>
-          HeaderSearch
-        </Text>
-      </TouchableHighlight>
+      <InputBar
+        placeholder={'Tìm kiếm'}
+        setInput={setSearchKeyword}
+        actionFn={actionFn}
+      />
     </View>
   );
 };
