@@ -58,7 +58,7 @@ const TmpScreen = ({navigation}) => {
         style={styles.button}
         onPress={() => {
           navigation.navigate('CommentPage', {
-            postId: '639db920e1077b28b889119f',
+            postId: '63b3a41195bf651f4b4d5cab',
           });
         }}>
         <Text style={styles.text}>Comment Page</Text>

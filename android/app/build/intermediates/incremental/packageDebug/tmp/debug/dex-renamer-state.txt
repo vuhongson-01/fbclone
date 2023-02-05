@@ -1,4 +1,4 @@
-#Mon Jan 02 23:55:15 ICT 2023
+#Tue Jan 03 09:26:19 ICT 2023
 path.4=12/classes.dex
 path.3=1/classes.dex
 path.2=0/classes.dex
@@ -6,17 +6,17 @@ path.1=0/classes.dex
 path.6=6/classes.dex
 path.5=14/classes.dex
 path.0=classes.dex
-base.4=/Users/vuhongsonchv1619gmail.com/Desktop/File_linh_tinh/UDDNT/da_nen_tang/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/12/classes.dex
-base.3=/Users/vuhongsonchv1619gmail.com/Desktop/File_linh_tinh/UDDNT/da_nen_tang/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/1/classes.dex
-base.2=/Users/vuhongsonchv1619gmail.com/Desktop/File_linh_tinh/UDDNT/da_nen_tang/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
-base.1=/Users/vuhongsonchv1619gmail.com/Desktop/File_linh_tinh/UDDNT/da_nen_tang/android/app/build/intermediates/dex/debug/mergeLibDexDebug/0/classes.dex
-base.0=/Users/vuhongsonchv1619gmail.com/Desktop/File_linh_tinh/UDDNT/da_nen_tang/android/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.4=/Users/vuhongsonchv1619gmail.com/Desktop/File_linh_tinh/UDDNT/fbclone1/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/12/classes.dex
+base.3=/Users/vuhongsonchv1619gmail.com/Desktop/File_linh_tinh/UDDNT/fbclone1/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/1/classes.dex
+base.2=/Users/vuhongsonchv1619gmail.com/Desktop/File_linh_tinh/UDDNT/fbclone1/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.1=/Users/vuhongsonchv1619gmail.com/Desktop/File_linh_tinh/UDDNT/fbclone1/android/app/build/intermediates/dex/debug/mergeLibDexDebug/0/classes.dex
+base.0=/Users/vuhongsonchv1619gmail.com/Desktop/File_linh_tinh/UDDNT/fbclone1/android/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
 renamed.6=classes7.dex
 renamed.5=classes6.dex
-base.6=/Users/vuhongsonchv1619gmail.com/Desktop/File_linh_tinh/UDDNT/da_nen_tang/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/6/classes.dex
+base.6=/Users/vuhongsonchv1619gmail.com/Desktop/File_linh_tinh/UDDNT/fbclone1/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/6/classes.dex
 renamed.4=classes5.dex
-base.5=/Users/vuhongsonchv1619gmail.com/Desktop/File_linh_tinh/UDDNT/da_nen_tang/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/14/classes.dex
+base.5=/Users/vuhongsonchv1619gmail.com/Desktop/File_linh_tinh/UDDNT/fbclone1/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/14/classes.dex

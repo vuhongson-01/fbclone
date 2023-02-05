@@ -21,7 +21,7 @@ const PersonalProfileScreen = ({navigation, routes}) => {
   const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
-    UserService.get('63b310a589a068ff8cda444f').then(res => {
+    UserService.get('639d85f7658d870d64fc9656').then(res => {
       console.log(res.data.data);
       setUserInfo(res.data.data);
     });
