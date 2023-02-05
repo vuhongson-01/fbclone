@@ -7,6 +7,7 @@ const InputBar = ({
   setInput,
   onChangeText = () => {},
   keyboardType = 'default',
+  actionFn,
 }) => {
   const [isFocus, setFocus] = useState(false);
   return (
@@ -24,6 +25,7 @@ const InputBar = ({
           setInput(input);
           onChangeText();
         }}
+        onSubmitEditing={actionFn}
         secureTextEntry={isSecure}
         style={{
           borderBottomColor: isFocus ? 'blue' : 'gray',

@@ -1,25 +1,31 @@
-import React, {useEffect} from 'react';
-import {View, StyleSheet} from 'react-native';
-import LoadingDots from 'react-native-loading-dots';
+import {useEffect} from 'react';
+import {ActivityIndicator, StyleSheet, View} from 'react-native';
 import {Avatar} from 'react-native-ui-lib';
-import {
-  CreateTable,
-  getFirstUsers,
-  getAllUsers,
-} from '../helper/sqlite/user_query';
+import {useDispatch} from 'react-redux';
+import {COLOR} from '../constants/constants';
+import {CreateTable} from '../helper/sqlite/user_query';
+import {loadUser} from '../store/auth/authSlice';
 
 const Init = ({navigation}) => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const fetchData = async () => {
       await CreateTable();
-      let res = await getFirstUsers();
-      if (res.length > 0) {
-        console.log(res[0].token);
-        setTimeout(() => {
-          navigation.navigate('TopTop');
-        }, 2000);
+      const userData = await dispatch(loadUser()).unwrap();
+      console.log(userData);
+      if (userData.user) {
+        // const user = await dispatch(loadUser()).unwrap();
+        navigation.reset({
+          index: 0,
+          routes: [{name: 'HomePage'}],
+        });
+        // navigation.navigate('HomePage');
       } else {
-        navigation.navigate('LogIn');
+        navigation.reset({
+          index: 0,
+          routes: [{name: 'LogIn'}],
+        });
       }
     };
     fetchData();
@@ -28,7 +34,7 @@ const Init = ({navigation}) => {
     <View style={styles.loadingScreen}>
       <Avatar source={require('../../assets/images/logo.png')} size={100} />
       <View style={styles.dotsWrapper}>
-        <LoadingDots dots={5} size={15} colors={[]} />
+        <ActivityIndicator size="large" color={COLOR.icon} />
       </View>
     </View>
   );
