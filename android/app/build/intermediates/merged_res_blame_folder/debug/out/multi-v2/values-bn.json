@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.da_nen_tang.app-mergeDebugResources-28:/values-bn/values-bn.xml",
+            "outputFile": "com.facebook.app-mergeDebugResources-28:/values-bn/values-bn.xml",
             "map": [
                 {
                     "source": "/Users/vuhongsonchv1619gmail.com/.gradle/caches/transforms-3/11d507de7433c9579a0cc73df508c8c6/transformed/core-1.7.0/res/values-bn/values-bn.xml",

@@ -1,33 +1,38 @@
-import {View, Text, Image} from 'react-native';
-import React, {useState} from 'react';
-import InputBar from '../components/input-bar';
-import MyButton from '../components/button';
-import {buttonColor} from '../constants/theme/config';
-import UserService from '../helper/services/UserService';
-import Notification from '../utils/Notification';
+import {useState} from 'react';
+import {Image, Text, View} from 'react-native';
 import {Avatar} from 'react-native-ui-lib';
+import {useDispatch} from 'react-redux';
+import MyButton from '../components/button';
+import InputBar from '../components/input-bar';
+import {COLOR} from '../constants/constants';
+import {loginUser} from '../store/auth/authSlice';
+import Notification from '../utils/Notification';
 
 const Login = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
 
-  const onPressLogin = () => {
+  const onPressLogin = async () => {
     let body = {
       phonenumber: username,
       password: password,
     };
-    UserService.login(body)
-      .then(res => {
+
+    try {
+      const loginData = await dispatch(loginUser(body)).unwrap();
+      if (loginData.success) {
         Notification.showSuccessMessage('Đăng nhập thành công');
-        navigation.navigate('TopTop');
-        console.log(res.data.token);
-      })
-      .catch(err => {
-        Notification.showErrorMessage(
-          'Tên đăng nhập hoặc mật khẩu chưa chính xác',
-          '',
-        );
-      });
+        navigation.reset({
+          index: 0,
+          routes: [{name: 'HomePage'}],
+        });
+      } else {
+        Notification.showErrorMessage(loginData.message);
+      }
+    } catch (error) {
+      Notification.showErrorMessage(error.message);
+    }
   };
 
   const onPressCreateNewAccount = () => {
@@ -74,9 +79,9 @@ const Login = ({navigation}) => {
 
         <MyButton
           label="Đăng nhập"
-          backgroundColor={buttonColor.color1}
-          color={'white'}
-          rippleColor="#6868ff"
+          backgroundColor={COLOR.mainBlue}
+          color={COLOR.mainWhite}
+          rippleColor={COLOR.mainBlue}
           onPress={onPressLogin}
         />
         <View
@@ -100,9 +105,9 @@ const Login = ({navigation}) => {
         </View>
         <MyButton
           label="Tạo tài khoản mới"
-          backgroundColor={buttonColor.color2}
-          color={'white'}
-          rippleColor="#0f8a0f"
+          backgroundColor={COLOR.mainGreen}
+          color={COLOR.mainWhite}
+          rippleColor={COLOR.mainGreen}
           onPress={onPressCreateNewAccount}
         />
       </View>

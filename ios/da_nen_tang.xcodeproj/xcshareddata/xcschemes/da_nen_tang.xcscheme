@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "da_nen_tang.app"
-               BlueprintName = "da_nen_tang"
-               ReferencedContainer = "container:da_nen_tang.xcodeproj">
+               BuildableName = "facebook.app"
+               BlueprintName = "facebook"
+               ReferencedContainer = "container:facebook.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
                BuildableName = "da_nen_tangTests.xctest"
                BlueprintName = "da_nen_tangTests"
-               ReferencedContainer = "container:da_nen_tang.xcodeproj">
+               ReferencedContainer = "container:facebook.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "da_nen_tang.app"
-            BlueprintName = "da_nen_tang"
-            ReferencedContainer = "container:da_nen_tang.xcodeproj">
+            BuildableName = "facebook.app"
+            BlueprintName = "facebook"
+            ReferencedContainer = "container:facebook.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "da_nen_tang.app"
-            BlueprintName = "da_nen_tang"
-            ReferencedContainer = "container:da_nen_tang.xcodeproj">
+            BuildableName = "facebook.app"
+            BlueprintName = "facebook"
+            ReferencedContainer = "container:facebook.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

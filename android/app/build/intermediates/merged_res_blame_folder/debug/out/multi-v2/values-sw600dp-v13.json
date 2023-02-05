@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.da_nen_tang.app-mergeDebugResources-28:/values-sw600dp-v13/values-sw600dp-v13.xml",
+            "outputFile": "com.facebook.app-mergeDebugResources-28:/values-sw600dp-v13/values-sw600dp-v13.xml",
             "map": [
                 {
                     "source": "/Users/vuhongsonchv1619gmail.com/.gradle/caches/transforms-3/85c19ddbd068993bd81f33124c623f6c/transformed/material-1.1.0/res/values-sw600dp-v13/values-sw600dp-v13.xml",

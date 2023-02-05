@@ -1,4 +1,4 @@
-package com.da_nen_tang.newarchitecture.modules;
+package com.facebook.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

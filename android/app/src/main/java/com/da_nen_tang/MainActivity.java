@@ -1,4 +1,4 @@
-package com.da_nen_tang;
+package com.facebook;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
@@ -12,7 +12,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "da_nen_tang";
+    return "Facebook";
   }
 
   /**
