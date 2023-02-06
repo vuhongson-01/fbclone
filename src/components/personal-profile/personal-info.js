@@ -6,7 +6,7 @@ import {faUser} from '@fortawesome/free-solid-svg-icons/faUser';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {memo} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-const InfoView = memo(({userInfo}) => {
+const InfoView = ({userInfo}) => {
   return (
     <View style={styles.container}>
       <View style={{marginTop: 12}}>
@@ -43,7 +43,7 @@ const InfoView = memo(({userInfo}) => {
       </View>
     </View>
   );
-});
+};
 
 const styles = StyleSheet.create({
   container: {
