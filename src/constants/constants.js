@@ -10,6 +10,7 @@ export const COLOR = {
   icon: '#789AF7',
   lockIcon: '#000000',
   text: 'rgb(5, 5, 5)',
+  placeholder: '#808B96',
   background: '#FFFFFF',
   mainBlue: 'rgb(27, 116, 228)',
   mainBlack: 'rgb(5, 5, 5)',

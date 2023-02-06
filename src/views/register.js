@@ -13,6 +13,8 @@ import {COLOR} from '../constants/constants';
 import UserService from '../helper/services/UserService';
 import Notification from '../utils/Notification';
 const {TextField} = Incubator;
+const options = ['Nam', 'Nữ'];
+const logo = require('../../assets/image/Logo.png');
 
 const Register = ({navigation}) => {
   const [name, setName] = useState('');

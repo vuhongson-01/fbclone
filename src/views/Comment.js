@@ -13,12 +13,12 @@ import { View } from "react-native-ui-lib";
 import CommentComponent from "../components/CommentComponent";
 import PostCommentService from '../helper/services/PostCommentService';
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faThumbsUp, faSmile, faPaperPlane } from "@fortawesome/free-regular-svg-icons";
-import EmojiSelector, { Categories } from "react-native-emoji-selector";
+import { faThumbsUp, faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 import PostService from '../helper/services/PostService';
 import { isCloseToBottom } from "../utils/utils";
 import { COLOR } from "../constants/constants";
 import Notification from "../utils/Notification"
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const styles = StyleSheet.create({
     container: {
@@ -41,8 +41,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: COLOR.text
     },
-    headerIcon: {
-
+    headerLeftContainer: {
+        display: 'flex',
+        flexDirection: 'row',
     },
     body: {
         flex: 1
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
         paddingRight: 10,
     },
     footer: {
-        width: '80%',
+        width: '100%',
         height: 60,
         display: 'flex',
         flexDirection: 'row',
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     textInput: {
-        width: '100%',
+        width: '85%',
         borderRadius: 20,
         backgroundColor: '#EAEDED',
         fontSize: 18,
@@ -71,19 +72,14 @@ const styles = StyleSheet.create({
         paddingTop: 10
     },
     iconWrap: {
-        marginLeft: 10
+        marginRight: 10
     },
-    emojiWrap: {
-        height: '100%',
-        width: '100%'
-    }
 })
 const Comment = ({ route, navigation }) => {
     const { postId } = route.params;
     const [comment, setComment] = useState('');
     const [listComments, setListComments] = useState([]);
     const [isLiked, setIsLiked] = useState(false);
-    const [showEmojiPicker, setShowEmojiPicker] = useState(false);
     const [responseFor, setResponseFor] = useState();
     const scrollViewRef = useRef();
     const [refreshing, setRefreshing] = useState(false);
@@ -143,7 +139,6 @@ const Comment = ({ route, navigation }) => {
             commentAnswered: responseFor
         })
             .then(res => {
-                setShowEmojiPicker(false);
                 setComment('');
                 Keyboard.dismiss();
                 Notification.showSuccessMessage('Thông báo', 'Gửi bình luận thành công');
@@ -158,7 +153,12 @@ const Comment = ({ route, navigation }) => {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Text style={styles.headerTitle}>Bình luận</Text>
+                <View style={styles.headerLeftContainer}>
+                    <TouchableOpacity style={{ marginLeft: 5, marginRight: 20 }} onPress={() => navigation.goBack()}>
+                        <FontAwesomeIcon size={28} icon={faArrowLeft} />
+                    </TouchableOpacity>
+                    <Text style={styles.headerTitle}>Bình luận</Text>
+                </View>
                 <TouchableOpacity style={styles.iconWrap} onPress={() => likeAction()}>
                     <FontAwesomeIcon size={24} icon={faThumbsUp} color={isLiked ? COLOR.icon : COLOR.text} />
                 </TouchableOpacity>
@@ -181,11 +181,17 @@ const Comment = ({ route, navigation }) => {
                     }}
                 >
                     {
+                        listComments.length > 0 
+                        ?
                         listComments.map(item => (
                             <View key={item._id}>
                                 <CommentComponent props={item} />
                             </View>
-                        ))
+                        )) 
+                        : 
+                        <Text style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'Roboto', color: COLOR.text, marginTop: 10 }}>
+                            Không có bình luận nào.
+                        </Text>
                     }
                 </ScrollView>
             </View>
@@ -193,35 +199,17 @@ const Comment = ({ route, navigation }) => {
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
                     <TextInput
                         placeholder="Viết bình luận..."
+                        placeholderTextColor={COLOR.placeholder}
                         style={styles.textInput}
                         value={comment}
+                        maxLength={500}
                         onChangeText={(value) => setComment(value)}
                     />
                 </TouchableWithoutFeedback>
-                <TouchableOpacity style={styles.iconWrap} onPress={() => {
-                    setShowEmojiPicker(!showEmojiPicker);
-                    Keyboard.dismiss();
-                }}>
-                    <FontAwesomeIcon size={24} icon={faSmile} />
-                </TouchableOpacity>
                 <TouchableOpacity style={styles.iconWrap} onPress={() => sendComment()}>
-                    <FontAwesomeIcon size={24} icon={faPaperPlane} color={ COLOR.icon } />
+                    <FontAwesomeIcon size={24} icon={faPaperPlane} color={COLOR.icon} />
                 </TouchableOpacity>
             </View>
-            {showEmojiPicker &&
-                <View style={styles.emojiWrap} >
-                    <EmojiSelector
-                        showSearchBar={false}
-                        category={Categories.emotion}
-                        showHistory={false}
-                        showTabs={false}
-                        showSectionTitles={false}
-                        onEmojiSelected={(emoji) => {
-                            setComment(comment + emoji);
-                        }}
-                    />
-                </View>
-            }
         </View>
     );
 }

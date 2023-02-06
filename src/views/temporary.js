@@ -1,19 +1,27 @@
-import { Button, ScrollView, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import {
+  Button,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  View,
+} from 'react-native';
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { logoutUser } from '../store/auth/authSlice';
-
-const TmpScreen = ({ navigation }) => {
+import {useDispatch, useSelector} from 'react-redux';
+import {logoutUser, selectAuth} from '../store/auth/authSlice';
+const TmpScreen = ({navigation}) => {
   const dispatch = useDispatch();
-
+  const {user} = useSelector(selectAuth);
   return (
     <ScrollView>
       <TouchableHighlight
         style={styles.button}
         onPress={() => {
-          navigation.navigate('PersonalProfileScreen');
+          navigation.navigate('ProfileScreen', {
+            userId: user._id,
+          });
         }}>
-        <Text style={styles.text}>PersonalProfileScreen</Text>
+        <Text style={styles.text}>ProfileScreen</Text>
       </TouchableHighlight>
       <TouchableHighlight
         style={styles.button}
@@ -80,6 +88,31 @@ const TmpScreen = ({ navigation }) => {
         }}>
         <Text style={styles.text}>Upload Image Test</Text>
       </TouchableHighlight>
+
+      <TouchableHighlight
+        style={styles.button}
+        onPress={() => {
+          navigation.navigate('Settings');
+        }}>
+        <Text style={styles.text}>Settings</Text>
+      </TouchableHighlight>
+
+      <TouchableHighlight
+        style={styles.button}
+        onPress={() => {
+          navigation.navigate('Chat');
+        }}>
+        <Text style={styles.text}>Chat</Text>
+      </TouchableHighlight>
+
+      <TouchableHighlight
+        style={styles.button}
+        onPress={() => {
+          navigation.navigate('SearchPage');
+        }}>
+        <Text style={styles.text}>SearchPage</Text>
+      </TouchableHighlight>
+
       <TouchableHighlight
         style={styles.alertButton}
         onPress={() => {
