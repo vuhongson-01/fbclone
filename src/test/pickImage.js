@@ -1,32 +1,22 @@
-import React, { Fragment, Component } from 'react';
+import {Component, Fragment} from 'react';
 import {
-  launchCamera,
-  launchImageLibrary
-} from 'react-native-image-picker';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  Image,
-  Button,
   Dimensions,
-  TouchableOpacity
+  Image,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {COLOR} from '../constants/constants';
 
 const options = {
   title: 'Select Avatar',
-  customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
+  customButtons: [{name: 'fb', title: 'Choose Photo from Facebook'}],
   storageOptions: {
     skipBackup: true,
     path: 'images',
@@ -34,29 +24,29 @@ const options = {
 };
 export default class PickImg extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       filepath: {
         data: '',
-        uri: ''
+        uri: '',
       },
       fileData: '',
-      fileUri: ''
-    }
+      fileUri: '',
+    };
   }
 
   chooseImage = () => {
     let options = {
       title: 'Select Image',
       customButtons: [
-        { name: 'customOptionKey', title: 'Choose Photo from Custom Option' },
+        {name: 'customOptionKey', title: 'Choose Photo from Custom Option'},
       ],
       storageOptions: {
         skipBackup: true,
         path: 'images',
       },
     };
-    showImagePicker(options, (response) => {
+    showImagePicker(options, response => {
       console.log('Response = ', response);
 
       if (response.didCancel) {
@@ -67,7 +57,7 @@ export default class PickImg extends Component {
         console.log('User tapped custom button: ', response.customButton);
         alert(response.customButton);
       } else {
-        const source = { uri: response.uri };
+        const source = {uri: response.uri};
 
         // You can also display the image using data:
         // const source = { uri: 'data:image/jpeg;base64,' + response.data };
@@ -76,11 +66,11 @@ export default class PickImg extends Component {
         this.setState({
           filePath: response.assets[0],
           fileData: response.assets[0].data,
-          fileUri: response.assets[0].uri
+          fileUri: response.assets[0].uri,
         });
       }
     });
-  }
+  };
 
   launchCamera = () => {
     let options = {
@@ -89,7 +79,7 @@ export default class PickImg extends Component {
         path: 'images',
       },
     };
-    launchCamera(options, (response) => {
+    launchCamera(options, response => {
       console.log('Response = ', response);
 
       if (response.didCancel) {
@@ -100,17 +90,16 @@ export default class PickImg extends Component {
         console.log('User tapped custom button: ', response.customButton);
         alert(response.customButton);
       } else {
-        const source = { uri: response.uri };
+        const source = {uri: response.uri};
         console.log('response', JSON.stringify(response));
         this.setState({
           filePath: response.assets[0],
           fileData: response.assets[0].data,
-          fileUri: response.assets[0].uri
+          fileUri: response.assets[0].uri,
         });
       }
     });
-
-  }
+  };
 
   launchImageLibrary = () => {
     let options = {
@@ -119,7 +108,7 @@ export default class PickImg extends Component {
         path: 'images',
       },
     };
-    launchImageLibrary(options, (response) => {
+    launchImageLibrary(options, response => {
       console.log('Response = ', response);
 
       if (response.didCancel) {
@@ -130,42 +119,46 @@ export default class PickImg extends Component {
         console.log('User tapped custom button: ', response.customButton);
         alert(response.customButton);
       } else {
-        const source = { uri: response.uri };
+        const source = {uri: response.uri};
         console.log('response', JSON.stringify(response));
         this.setState({
           filePath: response.assets[0],
           fileData: response.assets[0].base64,
-          fileUri: response.assets[0].uri
+          fileUri: response.assets[0].uri,
         });
         console.log(this.state.fileUri);
       }
     });
-
-  }
+  };
 
   renderFileData() {
     if (this.state.fileData) {
-      return <Image source={{ uri: 'data:image/jpeg;base64,' + this.state.fileData }}
-        style={styles.images}
-      />
+      return (
+        <Image
+          source={{uri: 'data:image/jpeg;base64,' + this.state.fileData}}
+          style={styles.images}
+        />
+      );
     } else {
-      return <Image source={require('../../assets/image/Logo.png')}
-        style={styles.images}
-      />
+      return (
+        <Image
+          source={require('../../assets/image/Logo.png')}
+          style={styles.images}
+        />
+      );
     }
   }
 
   renderFileUri() {
     if (this.state.fileUri) {
-      return <Image
-        source={{ uri: this.state.fileUri }}
-        style={styles.images}
-      />
+      return <Image source={{uri: this.state.fileUri}} style={styles.images} />;
     } else {
-      return <Image
-        source={require('../../assets/image/Logo.png')}
-        style={styles.images}
-      />
+      return (
+        <Image
+          source={require('../../assets/image/Logo.png')}
+          style={styles.images}
+        />
+      );
     }
   }
   render() {
@@ -174,38 +167,48 @@ export default class PickImg extends Component {
         <StatusBar barStyle="dark-content" />
         <SafeAreaView>
           <View style={styles.body}>
-            <Text style={{textAlign:'center',fontSize:20,paddingBottom:10}} >Pick Images from Camera & Gallery</Text>
+            <Text
+              style={{textAlign: 'center', fontSize: 20, paddingBottom: 10}}>
+              Pick Images from Camera & Gallery
+            </Text>
             <View style={styles.ImageSections}>
               <View>
                 {this.renderFileData()}
-                <Text  style={{textAlign:'center'}}>Base 64 String</Text>
+                <Text style={{textAlign: 'center'}}>Base 64 String</Text>
               </View>
               <View>
                 {this.renderFileUri()}
-                <Text style={{textAlign:'center'}}>File Uri</Text>
+                <Text style={{textAlign: 'center'}}>File Uri</Text>
               </View>
             </View>
 
             <View style={styles.btnParentSection}>
-              <TouchableOpacity onPress={this.chooseImage} style={styles.btnSection}  >
+              <TouchableOpacity
+                onPress={this.chooseImage}
+                style={styles.btnSection}>
                 <Text style={styles.btnText}>Choose File</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={this.launchCamera} style={styles.btnSection}  >
+              <TouchableOpacity
+                onPress={this.launchCamera}
+                style={styles.btnSection}>
                 <Text style={styles.btnText}>Directly Launch Camera</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={this.launchImageLibrary} style={styles.btnSection}  >
-                <Text style={styles.btnText}>Directly Launch Image Library</Text>
+              <TouchableOpacity
+                onPress={this.launchImageLibrary}
+                style={styles.btnSection}>
+                <Text style={styles.btnText}>
+                  Directly Launch Image Library
+                </Text>
               </TouchableOpacity>
             </View>
-
           </View>
         </SafeAreaView>
       </Fragment>
     );
   }
-};
+}
 
 const styles = StyleSheet.create({
   scrollView: {
@@ -218,39 +221,39 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     height: Dimensions.get('screen').height - 20,
-    width: Dimensions.get('screen').width
+    width: Dimensions.get('screen').width,
   },
   ImageSections: {
     display: 'flex',
     flexDirection: 'row',
     paddingHorizontal: 8,
     paddingVertical: 8,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   images: {
     width: 150,
     height: 150,
     borderColor: 'black',
     borderWidth: 1,
-    marginHorizontal: 3
+    marginHorizontal: 3,
   },
   btnParentSection: {
     alignItems: 'center',
-    marginTop:10
+    marginTop: 10,
   },
   btnSection: {
     width: 225,
     height: 50,
-    backgroundColor: '#DCDCDC',
+    backgroundColor: COLOR.mainGraySmoke,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 3,
-    marginBottom:10
+    marginBottom: 10,
   },
   btnText: {
     textAlign: 'center',
     color: 'gray',
     fontSize: 14,
-    fontWeight:'bold'
-  }
+    fontWeight: 'bold',
+  },
 });
