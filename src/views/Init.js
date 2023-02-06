@@ -1,12 +1,16 @@
-import {useEffect} from 'react';
-import {ActivityIndicator, StyleSheet, View} from 'react-native';
-import {Avatar} from 'react-native-ui-lib';
-import {useDispatch} from 'react-redux';
-import {COLOR} from '../constants/constants';
-import {CreateTable} from '../helper/sqlite/user_query';
-import {loadUser} from '../store/auth/authSlice';
+import { COLOR } from '../constants/constants';
+import React, { useEffect } from 'react';
+import { View, StyleSheet, ActivityIndicator } from 'react-native';
+import { Avatar } from 'react-native-ui-lib';
+import { useDispatch } from 'react-redux';
+import {
+  CreateTable,
+  getFirstUsers,
+  getAllUsers,
+} from '../helper/sqlite/user_query';
+import { loadToken, loadUser } from '../store/auth/authSlice';
 
-const Init = ({navigation}) => {
+const Init = ({ navigation }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,13 +22,13 @@ const Init = ({navigation}) => {
         // const user = await dispatch(loadUser()).unwrap();
         navigation.reset({
           index: 0,
-          routes: [{name: 'HomePage'}],
+          routes: [{ name: 'HomePage' }],
         });
         // navigation.navigate('HomePage');
       } else {
         navigation.reset({
           index: 0,
-          routes: [{name: 'LogIn'}],
+          routes: [{ name: 'LogIn' }],
         });
       }
     };

@@ -4,7 +4,11 @@
             "outputFile": "com.facebook.app-mergeDebugResources-28:/values-v16/values-v16.xml",
             "map": [
                 {
+<<<<<<< HEAD
                     "source": "C:\\Users\\thien\\.gradle\\caches\\transforms-3\\11d507de7433c9579a0cc73df508c8c6\\transformed\\core-1.7.0\\res\\values-v16\\values-v16.xml",
+=======
+                    "source": "C:\\Users\\KHANG\\.gradle\\caches\\transforms-3\\11d507de7433c9579a0cc73df508c8c6\\transformed\\core-1.7.0\\res\\values-v16\\values-v16.xml",
+>>>>>>> 748ba639cfbd978df3939c03540e46d33ea6b6c7
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -14,7 +18,11 @@
                     }
                 },
                 {
+<<<<<<< HEAD
                     "source": "C:\\Users\\thien\\.gradle\\caches\\transforms-3\\892bf90dd22489c729bd09d5a78c2e0f\\transformed\\appcompat-1.4.1\\res\\values-v16\\values-v16.xml",
+=======
+                    "source": "C:\\Users\\KHANG\\.gradle\\caches\\transforms-3\\892bf90dd22489c729bd09d5a78c2e0f\\transformed\\appcompat-1.4.1\\res\\values-v16\\values-v16.xml",
+>>>>>>> 748ba639cfbd978df3939c03540e46d33ea6b6c7
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

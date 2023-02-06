@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // export const BASE_URL = 'http://da-nen-tang-20221.vercel.app/api/v1/';
 export const BASE_URL = 'http://localhost:8000/api/v1/';
 // export const BASE_URL = 'http://10.0.2.2:8000/api/v1/';
@@ -80,3 +81,5 @@ export const httpStatus = {
 export const ChatType = {
   PRIVATE_CHAT: 'PRIVATE_CHAT',
 };
+=======
+>>>>>>> 748ba639cfbd978df3939c03540e46d33ea6b6c7
