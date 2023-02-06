@@ -181,17 +181,17 @@ const Comment = ({ route, navigation }) => {
                     }}
                 >
                     {
-                        listComments.length > 0 
-                        ?
-                        listComments.map(item => (
-                            <View key={item._id}>
-                                <CommentComponent props={item} />
-                            </View>
-                        )) 
-                        : 
-                        <Text style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'Roboto', color: COLOR.text, marginTop: 10 }}>
-                            Không có bình luận nào.
-                        </Text>
+                        listComments.length > 0
+                            ?
+                            listComments.map(item => (
+                                <View key={item._id}>
+                                    <CommentComponent props={item} />
+                                </View>
+                            ))
+                            :
+                            <Text style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'Roboto', color: COLOR.text, marginTop: 10 }}>
+                                Không có bình luận nào.
+                            </Text>
                     }
                 </ScrollView>
             </View>

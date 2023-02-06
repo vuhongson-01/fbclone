@@ -7,11 +7,11 @@ import {
   View,
 } from 'react-native';
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {logoutUser, selectAuth} from '../store/auth/authSlice';
-const TmpScreen = ({navigation}) => {
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutUser, selectAuth } from '../store/auth/authSlice';
+const TmpScreen = ({ navigation }) => {
   const dispatch = useDispatch();
-  const {user} = useSelector(selectAuth);
+  const { user } = useSelector(selectAuth);
   return (
     <ScrollView>
       <TouchableHighlight

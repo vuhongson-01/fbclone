@@ -1,10 +1,10 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faHome, faUserFriends, faBars} from '@fortawesome/free-solid-svg-icons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faHome, faUserFriends, faBars } from '@fortawesome/free-solid-svg-icons';
 import HomePageComponent from '../components/home/HomePage';
 import FriendshipComponent from '../components/friends/FriendshipComponent';
 import Settings from './settings_page';
-import {COLOR} from '../constants/constants';
+import { COLOR } from '../constants/constants';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,7 +21,7 @@ const Homepage = () => {
         component={HomePageComponent}
         options={{
           tabBarLabel: 'Trang chủ',
-          tabBarIcon: ({color, size}) => (
+          tabBarIcon: ({ color, size }) => (
             <FontAwesomeIcon icon={faHome} color={color} size={size} />
           ),
         }}
@@ -31,7 +31,7 @@ const Homepage = () => {
         component={FriendshipComponent}
         options={{
           tabBarLabel: 'Bạn bè',
-          tabBarIcon: ({color, size}) => (
+          tabBarIcon: ({ color, size }) => (
             <FontAwesomeIcon icon={faUserFriends} color={color} size={size} />
           ),
         }}
@@ -41,7 +41,7 @@ const Homepage = () => {
         component={Settings}
         options={{
           tabBarLabel: 'Menu',
-          tabBarIcon: ({color, size}) => (
+          tabBarIcon: ({ color, size }) => (
             <FontAwesomeIcon icon={faBars} color={color} size={size} />
           ),
         }}
