@@ -3,8 +3,8 @@ import {
   faMagnifyingGlass,
   faPencil,
 } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { useEffect, useState } from 'react';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {useEffect, useState} from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -12,24 +12,19 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import { View } from 'react-native-ui-lib';
+import {View} from 'react-native-ui-lib';
 import io from 'socket.io-client';
 import SingleChat from '../../components/chat/SingleChat';
-import { COLOR, httpStatus } from '../../constants/constants';
+import {COLOR, httpStatus} from '../../constants/constants';
 import ChatService from '../../helper/services/ChatService';
 
-const Chats = ({ navigation, route }) => {
-  const { friend } = route.params;
+const Chats = ({navigation}) => {
   const [chatList, setChatList] = useState([]);
-  const socket = io(`http://localhost:8000`, { autoConnect: false });
+  const socket = io(`http://localhost:8000`, {autoConnect: false});
 
   useEffect(() => {
     socket.connect();
     fetchChatList();
-
-    if (friend)
-      navigateToMessage(friend);
-
     return () => {
       socket.disconnect();
     };
@@ -45,27 +40,6 @@ const Chats = ({ navigation, route }) => {
     }
   };
 
-  const navigateToMessage = async friend => {
-    try {
-      const {
-        status,
-        data: { data },
-      } = await ChatService.sendMessage({
-        receivedId: friend._id,
-        type: ChatType.PRIVATE_CHAT,
-      });
-      if (status == httpStatus.OK)
-        navigation.navigate('Message', {
-          chatId: data._id,
-          receivedUser: friend,
-          socket,
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -76,8 +50,8 @@ const Chats = ({ navigation, route }) => {
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Tin nhắn</Text>
         <TouchableOpacity
-          style={{ ...styles.iconWrap, marginLeft: 'auto' }}
-          onPress={() => navigation.navigate('NewConversation', { socket })}>
+          style={{...styles.iconWrap, marginLeft: 'auto'}}
+          onPress={() => navigation.navigate('NewConversation', {socket})}>
           <FontAwesomeIcon size={24} icon={faPencil} color={COLOR.background} />
         </TouchableOpacity>
       </View>

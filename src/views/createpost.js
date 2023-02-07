@@ -1,6 +1,6 @@
-import { faImage } from '@fortawesome/free-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { useState } from 'react';
+import {faImage} from '@fortawesome/free-regular-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {useState} from 'react';
 import {
   ActivityIndicator,
   SafeAreaView,
@@ -10,7 +10,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {
   Avatar,
   Button,
@@ -19,16 +19,16 @@ import {
   PanningProvider,
   View,
 } from 'react-native-ui-lib';
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 import ListImageComponent from '../components/ListImageComponent';
-import { COLOR, FIREBASE_CONFIG } from '../constants/constants';
+import {COLOR, FIREBASE_CONFIG} from '../constants/constants';
 import PostService from '../helper/services/PostService';
-import { selectAuth } from '../store/auth/authSlice';
+import {selectAuth} from '../store/auth/authSlice';
 import Notification from '../utils/Notification';
-import { uploadImageToFirebase } from '../utils/upload_image';
+import {uploadImageToFirebase} from '../utils/upload_image';
 
-const { TextField } = Incubator;
-const CreatePost = ({ navigation }) => {
+const {TextField} = Incubator;
+const CreatePost = ({navigation}) => {
   // const [user, setUser] = useState({});
   const [isVideo, setVideo] = useState(false);
   const [asset, setAsset] = useState([]);
@@ -38,12 +38,12 @@ const CreatePost = ({ navigation }) => {
   const [imageURI, setImageURI] = useState([]);
   const [isLoading, setLoading] = useState(false);
 
-  const modalProps = { supportedOrientations: ['portrait', 'landscape'] };
-  const headerProps = { title: 'Lựa chọn phương thức' };
+  const modalProps = {supportedOrientations: ['portrait', 'landscape']};
+  const headerProps = {title: 'Lựa chọn phương thức'};
 
   const [widenInput, setWiden] = useState(false);
 
-  const { user } = useSelector(selectAuth);
+  const {user} = useSelector(selectAuth);
 
   // useEffect(() => {
   //     UserService.getCurrentUser()
@@ -257,7 +257,7 @@ const CreatePost = ({ navigation }) => {
               size={60}></Avatar>
             <View marginL-10>
               <Text style={styles.userName}>{user?.username}</Text>
-              <Text style={{ color: COLOR.text }} marginL-10>
+              <Text style={{color: COLOR.text}} marginL-10>
                 Chia sẻ cảm xúc của bạn
               </Text>
             </View>
@@ -278,8 +278,8 @@ const CreatePost = ({ navigation }) => {
               placeholder="Bạn đang nghĩ gì?"
               placeholderTextColor={'#767676'}
               value={content}
-            // onFocus={() => setWiden(true)}
-            // onBlur={() => setWiden(false)}
+              // onFocus={() => setWiden(true)}
+              // onBlur={() => setWiden(false)}
             />
           </View>
         </View>
@@ -302,7 +302,7 @@ const CreatePost = ({ navigation }) => {
       <Button
         margin-10
         borderRadius={5}
-        style={{ height: 42 }}
+        style={{height: 42}}
         color={COLOR.mainBlue}
         onPress={() => handleUploadPhoto()}>
         <Text
@@ -315,7 +315,7 @@ const CreatePost = ({ navigation }) => {
           Đăng bài
         </Text>
         <ActivityIndicator
-          style={{ position: 'absolute', right: 10 }}
+          style={{position: 'absolute', right: 10}}
           animating={isLoading}
           size="large"
           color={COLOR.icon}
@@ -328,7 +328,7 @@ const CreatePost = ({ navigation }) => {
         center
         modalProps={modalProps}
         headerProps={headerProps}
-        containerStyle={{ width: '100%' }}>
+        containerStyle={{width: '100%'}}>
         {
           <View style={styles.dialog}>
             <Button
@@ -336,21 +336,21 @@ const CreatePost = ({ navigation }) => {
               label="Chụp ảnh"
               borderRadius={5}
               onPress={() => runCamera('photo')}
-              style={{ width: 110, height: 50, color: 'white' }}
+              style={{width: 110, height: 50, color: 'white'}}
             />
             <Button
               size={Button.sizes.medium}
               label="Quay video"
               borderRadius={5}
               onPress={() => runCamera('video')}
-              style={{ width: 110, height: 50, color: 'white' }}
+              style={{width: 110, height: 50, color: 'white'}}
             />
             <Button
               size={Button.sizes.medium}
               label="Chọn"
               borderRadius={5}
               onPress={runImageLibrary}
-              style={{ width: 110, height: 50, color: 'white' }}
+              style={{width: 110, height: 50, color: 'white'}}
             />
           </View>
         }

@@ -86,11 +86,9 @@ const HomePageComponent = ({navigation}) => {
     });
   };
 
-  handlePostDetail = (post, avatar, username) => {
+  handlePostDetail = id => {
     navigation.navigate('DetailPost', {
-      post: post,
-      avatar: avatar,
-      username: username
+      postId: id,
     });
   };
 
