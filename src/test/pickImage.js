@@ -47,7 +47,7 @@ export default class PickImg extends Component {
       },
     };
     showImagePicker(options, response => {
-      console.log('Response = ', response);
+      // console.log('Response = ', response);
 
       if (response.didCancel) {
         console.log('User cancelled image picker');
@@ -62,7 +62,7 @@ export default class PickImg extends Component {
         // You can also display the image using data:
         // const source = { uri: 'data:image/jpeg;base64,' + response.data };
         // alert(JSON.stringify(response));s
-        console.log('response', JSON.stringify(response));
+        // console.log('response', JSON.stringify(response));
         this.setState({
           filePath: response.assets[0],
           fileData: response.assets[0].data,
@@ -80,7 +80,7 @@ export default class PickImg extends Component {
       },
     };
     launchCamera(options, response => {
-      console.log('Response = ', response);
+      // console.log('Response = ', response);
 
       if (response.didCancel) {
         console.log('User cancelled image picker');
@@ -91,7 +91,7 @@ export default class PickImg extends Component {
         alert(response.customButton);
       } else {
         const source = {uri: response.uri};
-        console.log('response', JSON.stringify(response));
+        // console.log('response', JSON.stringify(response));
         this.setState({
           filePath: response.assets[0],
           fileData: response.assets[0].data,
@@ -120,13 +120,13 @@ export default class PickImg extends Component {
         alert(response.customButton);
       } else {
         const source = {uri: response.uri};
-        console.log('response', JSON.stringify(response));
+        // console.log('response', JSON.stringify(response));
         this.setState({
           filePath: response.assets[0],
           fileData: response.assets[0].base64,
           fileUri: response.assets[0].uri,
         });
-        console.log(this.state.fileUri);
+        // console.log(this.state.fileUri);
       }
     });
   };

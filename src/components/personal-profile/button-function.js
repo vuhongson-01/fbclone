@@ -1,24 +1,24 @@
 import FriendService from '../../helper/services/FriendService';
-import { faCirclePlus } from '@fortawesome/free-solid-svg-icons/faCirclePlus';
-import { faEllipsis } from '@fortawesome/free-solid-svg-icons/faEllipsis';
-import { faPen } from '@fortawesome/free-solid-svg-icons/faPen';
-import { faUserCheck } from '@fortawesome/free-solid-svg-icons/faUserCheck';
-import { faUserPlus } from '@fortawesome/free-solid-svg-icons/faUserPlus';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { useState, useEffect, memo } from 'react';
-import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
-import { ActionSheet } from 'react-native-ui-lib';
+import {faCirclePlus} from '@fortawesome/free-solid-svg-icons/faCirclePlus';
+import {faEllipsis} from '@fortawesome/free-solid-svg-icons/faEllipsis';
+import {faPen} from '@fortawesome/free-solid-svg-icons/faPen';
+import {faUserCheck} from '@fortawesome/free-solid-svg-icons/faUserCheck';
+import {faUserPlus} from '@fortawesome/free-solid-svg-icons/faUserPlus';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {useState, useEffect, memo} from 'react';
+import {StyleSheet, Text, TouchableHighlight, View} from 'react-native';
+import {ActionSheet} from 'react-native-ui-lib';
 import MessengerIcon from '../../assets/svg/messenger';
 import Notification from '../../utils/Notification';
 import UserService from '../../helper/services/UserService';
-import { COLOR } from '../../constants/constants';
-const ButtonFunction = ({ userInfo, isGuest, navigation }) => {
+import {COLOR} from '../../constants/constants';
+const ButtonFunction = ({userInfo, isGuest, navigation}) => {
   const [isFriend, setFriend] = useState(false);
   const [friendActionOpen, setFriendActionOpen] = useState(false);
   const [sendRequest, setSendRequest] = useState(false);
   const addFriendRequest = add => {
     if (add) {
-      FriendService.sendRequest({ user_id: userInfo._id })
+      FriendService.sendRequest({user_id: userInfo._id})
         .then(res => {
           // console.log('add', res.data);
           setSendRequest(true);
@@ -27,7 +27,7 @@ const ButtonFunction = ({ userInfo, isGuest, navigation }) => {
           console.log(e);
         });
     } else {
-      FriendService.cancelSendRequest({ userId: userInfo._id })
+      FriendService.cancelSendRequest({userId: userInfo._id})
         .then(res => {
           // console.log('cancel', res.data);
           setSendRequest(false);
@@ -70,7 +70,7 @@ const ButtonFunction = ({ userInfo, isGuest, navigation }) => {
 
   const cancelAction = () => {
     // console.log(userInfo._id);
-    FriendService.remove({ user_id: userInfo._id })
+    FriendService.remove({user_id: userInfo._id})
       .then(res => {
         if (res.data.success) {
           Notification.showSuccessMessage(res.data.message);
@@ -94,7 +94,7 @@ const ButtonFunction = ({ userInfo, isGuest, navigation }) => {
         }}>
         <TouchableHighlight
           underlayColor={'transparent'}
-          style={{ flex: 4 }}
+          style={{flex: 4}}
           onPress={() => {
             if (isGuest) {
               if (isFriend) {
@@ -110,20 +110,20 @@ const ButtonFunction = ({ userInfo, isGuest, navigation }) => {
               <View
                 style={[
                   styles.buttonFunction,
-                  { backgroundColor: COLOR.mainGray },
+                  {backgroundColor: COLOR.mainGray},
                 ]}>
-                <FontAwesomeIcon icon={faUserCheck} style={{ marginRight: 10 }} />
-                <Text style={{ fontWeight: 'bold', fontSize: 16 }}>Bạn bè</Text>
+                <FontAwesomeIcon icon={faUserCheck} style={{marginRight: 10}} />
+                <Text style={{fontWeight: 'bold', fontSize: 16}}>Bạn bè</Text>
               </View>
             ) : (
               <View
                 style={[
                   styles.buttonFunction,
-                  { backgroundColor: COLOR.mainBlue },
+                  {backgroundColor: COLOR.mainBlue},
                 ]}>
                 <FontAwesomeIcon
                   icon={sendRequest ? faUserCheck : faUserPlus}
-                  style={{ color: COLOR.mainWhite, marginRight: 10 }}
+                  style={{color: COLOR.mainWhite, marginRight: 10}}
                 />
                 <Text
                   style={{
@@ -139,11 +139,11 @@ const ButtonFunction = ({ userInfo, isGuest, navigation }) => {
             <View
               style={[
                 styles.buttonFunction,
-                { backgroundColor: COLOR.mainBlue },
+                {backgroundColor: COLOR.mainBlue},
               ]}>
               <FontAwesomeIcon
                 icon={faCirclePlus}
-                style={{ color: COLOR.mainWhite, marginRight: 10 }}
+                style={{color: COLOR.mainWhite, marginRight: 10}}
               />
               <Text
                 style={{
@@ -158,20 +158,20 @@ const ButtonFunction = ({ userInfo, isGuest, navigation }) => {
         </TouchableHighlight>
 
         <TouchableHighlight
-          style={{ flex: 3.5, marginHorizontal: 12 }}
+          style={{flex: 3.5, marginHorizontal: 12}}
           underlayColor={'transparent'}
           onPress={() => {
             if (isGuest) {
-              navigation.navigate('Chat', { friend: userInfo })
+              navigation.navigate('Chat', {friend: userInfo});
             } else {
-              navigation.navigate('UpdateInfoScreen', { userInfo: userInfo });
+              navigation.navigate('UpdateInfoScreen', {userInfo: userInfo});
             }
           }}>
           {isGuest ? (
             <View
               style={[
                 styles.buttonFunction,
-                { backgroundColor: isFriend ? COLOR.mainBlue : COLOR.mainGray },
+                {backgroundColor: isFriend ? COLOR.mainBlue : COLOR.mainGray},
               ]}>
               <MessengerIcon
                 height={20}
@@ -192,9 +192,9 @@ const ButtonFunction = ({ userInfo, isGuest, navigation }) => {
             <View
               style={[
                 styles.buttonFunction,
-                { backgroundColor: COLOR.mainGray },
+                {backgroundColor: COLOR.mainGray},
               ]}>
-              <FontAwesomeIcon icon={faPen} style={{ marginRight: 10 }} />
+              <FontAwesomeIcon icon={faPen} style={{marginRight: 10}} />
               <Text
                 style={{
                   fontWeight: 'bold',
@@ -208,10 +208,10 @@ const ButtonFunction = ({ userInfo, isGuest, navigation }) => {
         </TouchableHighlight>
         <TouchableHighlight
           underlayColor={'transparent'}
-          onPress={() => { }}
+          onPress={() => {}}
           style={[
             styles.buttonFunction,
-            { backgroundColor: COLOR.mainGray, flex: 1 },
+            {backgroundColor: COLOR.mainGray, flex: 1},
           ]}>
           <FontAwesomeIcon icon={faEllipsis} />
         </TouchableHighlight>

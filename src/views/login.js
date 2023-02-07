@@ -1,17 +1,17 @@
-import { useState } from 'react';
-import { Image, Text, View } from 'react-native';
-import { Avatar } from 'react-native-ui-lib';
-import { useDispatch } from 'react-redux';
+import {useState} from 'react';
+import {Image, Text, View} from 'react-native';
+import {Avatar} from 'react-native-ui-lib';
+import {useDispatch} from 'react-redux';
 import MyButton from '../components/button';
-import { Input } from '@rneui/themed';
-import { COLOR } from '../constants/constants';
-import { loginUser } from '../store/auth/authSlice';
+import {Input} from '@rneui/themed';
+import {COLOR} from '../constants/constants';
+import {loginUser} from '../store/auth/authSlice';
 import Notification from '../utils/Notification';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { TouchableOpacity } from 'react-native';
+import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {TouchableOpacity} from 'react-native';
 
-const Login = ({ navigation }) => {
+const Login = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isShow1, setIsShow1] = useState(false);
@@ -29,7 +29,7 @@ const Login = ({ navigation }) => {
         // Notification.showSuccessMessage('Đăng nhập thành công');
         navigation.reset({
           index: 0,
-          routes: [{ name: 'HomePage' }],
+          routes: [{name: 'HomePage'}],
         });
       } else {
         Notification.showErrorMessage(loginData.message);
@@ -42,27 +42,17 @@ const Login = ({ navigation }) => {
   const onPressCreateNewAccount = () => {
     navigation.navigate('SignUp');
   };
-  
+
   return (
     <View>
-      <View style={{ width: '100%', height: 200, alignItems: 'center' }}>
+      <View style={{width: '100%', height: 200, alignItems: 'center'}}>
         <Image
-          source={require('../../assets/images/cover.png')}
+          source={require('../../assets/images/cover.jpeg')}
           resizeMode="cover"
           style={{
             width: '100%',
             height: 200,
           }}
-        />
-        <Avatar
-          containerStyle={{
-            position: 'absolute',
-            top: 60,
-            height: 80,
-            width: 80,
-          }}
-          source={require('../../assets/images/logo.png')}
-          size={80}
         />
       </View>
       <View
@@ -75,14 +65,14 @@ const Login = ({ navigation }) => {
           placeholder={'Email hoặc số điện thoại'}
           onChangeText={value => setUsername(value)}
           placeholderTextColor={COLOR.placeholder}
-          style={{ color: COLOR.text }}
+          style={{color: COLOR.text}}
         />
         <Input
           placeholder={'Mật khẩu'}
           onChangeText={value => setPassword(value)}
           placeholderTextColor={COLOR.placeholder}
           secureTextEntry={!isShow1}
-          style={{ color: COLOR.text }}
+          style={{color: COLOR.text}}
           rightIcon={
             <TouchableOpacity onPress={() => setIsShow1(!isShow1)}>
               <FontAwesomeIcon icon={isShow1 ? faEye : faEyeSlash} />
@@ -112,7 +102,7 @@ const Login = ({ navigation }) => {
               display: 'flex',
               alignSelf: 'center',
               position: 'absolute',
-              color: 'gray'
+              color: 'gray',
             }}>
             OR
           </Text>

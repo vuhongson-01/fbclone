@@ -39,7 +39,7 @@ const Register = ({navigation}) => {
     UserService.register(requestBody)
       .then(res => {
         Notification.showSuccessMessage('Đăng ký thành công');
-        console.log(res.data.data);
+        // console.log(res.data.data);
       })
       .catch(err => {
         console.log(err);
@@ -69,22 +69,12 @@ const Register = ({navigation}) => {
       <View>
         <View style={{width: '100%', height: 200, alignItems: 'center'}}>
           <Image
-            source={require('../../assets/images/cover.png')}
+            source={require('../../assets/images/cover.jpeg')}
             resizeMode="cover"
             style={{
               width: '100%',
               height: 200,
             }}
-          />
-          <Avatar
-            containerStyle={{
-              position: 'absolute',
-              top: 60,
-              height: 80,
-              width: 80,
-            }}
-            source={require('../../assets/images/logo.png')}
-            size={80}
           />
         </View>
         <View centerV paddingH-32>
