@@ -75,16 +75,16 @@ const CreatePost = ({navigation}) => {
       presentationStyle: 'pageSheet',
     };
     let response = await launchCamera(options);
-    console.log('response', response);
+    // console.log('response', response);
     if (response && response.assets) {
-      console.log('asset length b4 add', asset.length);
+      // console.log('asset length b4 add', asset.length);
       let notification = false;
       let list = response.assets.filter(item => {
         if (item.type.includes('video'))
           return item.fileSize < 10240 * 1024; //10mb
         else return item.fileSize < 4096 * 1024; //4mb
       });
-      console.log(list);
+      // console.log(list);
       if (list.length < response.assets.length) {
         Notification.showWarningMessage(
           'Kích thước ảnh phải nhỏ hơn 4mb, video phải nhỏ hơn 10mb',
@@ -101,7 +101,7 @@ const CreatePost = ({navigation}) => {
             }
           }
           if (hasVideo) {
-            console.log('list length', list.length == 1);
+            // console.log('list length', list.length == 1);
             if (asset.length == 0 && list.length == 1) {
               setAsset([...asset, ...list]);
               setVideo(true);
@@ -136,7 +136,7 @@ const CreatePost = ({navigation}) => {
     let response = await launchImageLibrary(options);
     console.log('response', response);
     if (response && response.assets) {
-      console.log('asset length b4 add', asset.length);
+      // console.log('asset length b4 add', asset.length);
       let notification = false;
       let list = response.assets.filter(item => {
         if (item.type.includes('video'))
@@ -159,7 +159,7 @@ const CreatePost = ({navigation}) => {
             }
           }
           if (hasVideo) {
-            console.log('list length', list.length == 1);
+            // console.log('list length', list.length == 1);
             if (asset.length == 0 && list.length == 1) {
               setAsset([...asset, ...list]);
               setVideo(true);
@@ -180,7 +180,7 @@ const CreatePost = ({navigation}) => {
           'Chỉ được đăng 1 video hoặc tối đa 4 ảnh',
         );
     }
-    console.log(asset);
+    // console.log(asset);
     setVisible(false);
   };
 

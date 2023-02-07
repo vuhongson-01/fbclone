@@ -9,7 +9,7 @@ import {COLOR} from '../../constants/constants';
 const AppBar = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>TopTop</Text>
+      <Text style={styles.text}>Facebook</Text>
       <View style={styles.Row}>
         <TouchableOpacity style={styles.action}>
           <FontAwesomeIcon icon={faSearch} size={18} style={styles.icon} />

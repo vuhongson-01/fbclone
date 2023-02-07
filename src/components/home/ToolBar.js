@@ -70,7 +70,7 @@ const ToolBar = () => {
         <View style={styles.Row}>
           <Avatar
             source={{uri: user?.avatar}}
-            onPress={() => handleAvatarPress(user._id)}
+            onPress={() => handleAvatarPress(user?._id)}
           />
           <TouchableOpacity onPress={() => handleFocus()}>
             <Text style={styles.Input}> Bạn đang nghĩ gì? </Text>

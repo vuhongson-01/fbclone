@@ -1,34 +1,34 @@
-import { COLOR } from '../constants/constants';
-import React, { useEffect } from 'react';
-import { View, StyleSheet, ActivityIndicator } from 'react-native';
-import { Avatar } from 'react-native-ui-lib';
-import { useDispatch } from 'react-redux';
+import {COLOR} from '../constants/constants';
+import React, {useEffect} from 'react';
+import {View, StyleSheet, ActivityIndicator} from 'react-native';
+import {Avatar} from 'react-native-ui-lib';
+import {useDispatch} from 'react-redux';
 import {
   CreateTable,
   getFirstUsers,
   getAllUsers,
 } from '../helper/sqlite/user_query';
-import { loadToken, loadUser } from '../store/auth/authSlice';
+import {loadToken, loadUser} from '../store/auth/authSlice';
 
-const Init = ({ navigation }) => {
+const Init = ({navigation}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
       await CreateTable();
       const userData = await dispatch(loadUser()).unwrap();
-      console.log(userData);
+      // console.log(userData);
       if (userData.user) {
         // const user = await dispatch(loadUser()).unwrap();
         navigation.reset({
           index: 0,
-          routes: [{ name: 'HomePage' }],
+          routes: [{name: 'HomePage'}],
         });
         // navigation.navigate('HomePage');
       } else {
         navigation.reset({
           index: 0,
-          routes: [{ name: 'LogIn' }],
+          routes: [{name: 'LogIn'}],
         });
       }
     };

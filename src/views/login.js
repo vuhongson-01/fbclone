@@ -3,14 +3,18 @@ import {Image, Text, View} from 'react-native';
 import {Avatar} from 'react-native-ui-lib';
 import {useDispatch} from 'react-redux';
 import MyButton from '../components/button';
-import InputBar from '../components/input-bar';
+import {Input} from '@rneui/themed';
 import {COLOR} from '../constants/constants';
 import {loginUser} from '../store/auth/authSlice';
 import Notification from '../utils/Notification';
+import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {TouchableOpacity} from 'react-native';
 
 const Login = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isShow1, setIsShow1] = useState(false);
   const dispatch = useDispatch();
 
   const onPressLogin = async () => {
@@ -22,7 +26,7 @@ const Login = ({navigation}) => {
     try {
       const loginData = await dispatch(loginUser(body)).unwrap();
       if (loginData.success) {
-        Notification.showSuccessMessage('Đăng nhập thành công');
+        // Notification.showSuccessMessage('Đăng nhập thành công');
         navigation.reset({
           index: 0,
           routes: [{name: 'HomePage'}],
@@ -38,26 +42,17 @@ const Login = ({navigation}) => {
   const onPressCreateNewAccount = () => {
     navigation.navigate('SignUp');
   };
+
   return (
     <View>
       <View style={{width: '100%', height: 200, alignItems: 'center'}}>
         <Image
-          source={require('../../assets/images/cover.png')}
+          source={require('../../assets/images/cover.jpeg')}
           resizeMode="cover"
           style={{
             width: '100%',
             height: 200,
           }}
-        />
-        <Avatar
-          containerStyle={{
-            position: 'absolute',
-            top: 60,
-            height: 80,
-            width: 80,
-          }}
-          source={require('../../assets/images/logo.png')}
-          size={80}
         />
       </View>
       <View
@@ -66,15 +61,23 @@ const Login = ({navigation}) => {
           paddingTop: 72,
           alignItems: 'center',
         }}>
-        <InputBar
+        <Input
           placeholder={'Email hoặc số điện thoại'}
-          setInput={setUsername}
-          keyboardType={'email-address'}
+          onChangeText={value => setUsername(value)}
+          placeholderTextColor={COLOR.placeholder}
+          style={{color: COLOR.text}}
         />
-        <InputBar
+        <Input
           placeholder={'Mật khẩu'}
-          isSecure={true}
-          setInput={setPassword}
+          onChangeText={value => setPassword(value)}
+          placeholderTextColor={COLOR.placeholder}
+          secureTextEntry={!isShow1}
+          style={{color: COLOR.text}}
+          rightIcon={
+            <TouchableOpacity onPress={() => setIsShow1(!isShow1)}>
+              <FontAwesomeIcon icon={isShow1 ? faEye : faEyeSlash} />
+            </TouchableOpacity>
+          }
         />
 
         <MyButton
@@ -99,6 +102,7 @@ const Login = ({navigation}) => {
               display: 'flex',
               alignSelf: 'center',
               position: 'absolute',
+              color: 'gray',
             }}>
             OR
           </Text>

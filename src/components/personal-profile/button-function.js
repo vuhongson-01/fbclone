@@ -162,7 +162,7 @@ const ButtonFunction = ({userInfo, isGuest, navigation}) => {
           underlayColor={'transparent'}
           onPress={() => {
             if (isGuest) {
-              //navigate to Message
+              navigation.navigate('Chat', {friend: userInfo});
             } else {
               navigation.navigate('UpdateInfoScreen', {userInfo: userInfo});
             }

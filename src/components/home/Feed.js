@@ -139,6 +139,17 @@ const Feed = ({
   const [isLiked, setIsLiked] = useState(false);
   const [initIsLiked, setInitIsLiked] = useState(false);
   const [bonus, setBonus] = useState(0);
+  const params = {
+    id,
+    described,
+    countComments,
+    authorId,
+    images,
+    videos,
+    likes,
+    createdAt,
+    isLike,
+  };
 
   useEffect(() => {
     setIsLiked(isLike);
@@ -178,10 +189,10 @@ const Feed = ({
             <Avatar
               source={{uri: author.avatar}}
               size={36}
-              onPress={() => handleAvatarPress(author._id)}
+              onPress={() => handleAvatarPress(author?._id)}
             />
             <View style={{paddingLeft: 10}}>
-              <TouchableOpacity onPress={() => handleAvatarPress(author._id)}>
+              <TouchableOpacity onPress={() => handleAvatarPress(author?._id)}>
                 <Text style={styles.User}>{author.username}</Text>
               </TouchableOpacity>
               <View style={styles.Row}>
@@ -222,7 +233,7 @@ const Feed = ({
               onPress={e =>
                 images?.length <= 1 || videos?.length == 1
                   ? e.preventDefault()
-                  : handlePostDetail(id)
+                  : handlePostDetail(params, author.avatar, author.username)
               }>
               <Text numberOfLines={1} style={styles.Post}>
                 {described}
@@ -241,7 +252,7 @@ const Feed = ({
             onPress={e =>
               images?.length <= 1 || videos?.length == 1
                 ? e.preventDefault()
-                : handlePostDetail(id)
+                : handlePostDetail(params, author.avatar, author.username)
             }>
             <Text style={styles.Post}>{described}</Text>
           </TouchableOpacity>
@@ -266,7 +277,10 @@ const Feed = ({
           <Image style={styles.Photo} source={{uri: images[0]}} />
         )}
         {images?.length === 2 && (
-          <TouchableOpacity onPress={() => handlePostDetail(id)}>
+          <TouchableOpacity
+            onPress={() =>
+              handlePostDetail(params, author.avatar, author.username)
+            }>
             <View
               style={{
                 display: 'flex',
@@ -276,13 +290,20 @@ const Feed = ({
                 flexDirection: 'row',
               }}>
               {images.map((image, index) => (
-                <Image style={styles.PhotoHalf} source={{uri: images[index]}} />
+                <Image
+                  style={styles.PhotoHalf}
+                  source={{uri: images[index]}}
+                  key={index}
+                />
               ))}
             </View>
           </TouchableOpacity>
         )}
         {images?.length === 3 && (
-          <TouchableOpacity onPress={() => handlePostDetail(id)}>
+          <TouchableOpacity
+            onPress={() =>
+              handlePostDetail(params, author.avatar, author.username)
+            }>
             <View style={{display: 'flex', flexDirection: 'row', marginTop: 9}}>
               <View
                 style={{
@@ -299,7 +320,10 @@ const Feed = ({
           </TouchableOpacity>
         )}
         {images?.length === 4 && (
-          <TouchableOpacity onPress={() => handlePostDetail(id)}>
+          <TouchableOpacity
+            onPress={() =>
+              handlePostDetail(params, author.avatar, author.username)
+            }>
             <View
               style={{
                 display: 'flex',

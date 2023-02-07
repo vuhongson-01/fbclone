@@ -4,7 +4,7 @@
             "outputFile": "com.facebook.app-mergeDebugResources-28:/values-large-v4/values-large-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\thien\\.gradle\\caches\\transforms-3\\85c19ddbd068993bd81f33124c623f6c\\transformed\\material-1.1.0\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "/Users/vuhongsonchv1619gmail.com/.gradle/caches/transforms-3/85c19ddbd068993bd81f33124c623f6c/transformed/material-1.1.0/res/values-large-v4/values-large-v4.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\thien\\.gradle\\caches\\transforms-3\\892bf90dd22489c729bd09d5a78c2e0f\\transformed\\appcompat-1.4.1\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "/Users/vuhongsonchv1619gmail.com/.gradle/caches/transforms-3/892bf90dd22489c729bd09d5a78c2e0f/transformed/appcompat-1.4.1/res/values-large-v4/values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",

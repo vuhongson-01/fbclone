@@ -82,9 +82,9 @@ const SearchPage = () => {
     useEffect(() => {
       PostService.search({keyword: ''})
         .then(res => {
-          console.log('res: ' + res.data.data);
+          // console.log('res: ' + res.data.data);
           setSearchPosts(res.data.data);
-          console.log(res.data.data.length);
+          // console.log(res.data.data.length);
         })
         .catch(error => {
           Notification.showErrorMessage('Đã xảy ra lỗi khi tìm kiếm bài viết');
@@ -94,9 +94,9 @@ const SearchPage = () => {
     useEffect(() => {
       UserService.search({keyword: ''})
         .then(res => {
-          console.log('res: ' + res.data.data);
+          // console.log('res: ' + res.data.data);
           setSearchUsers(res.data.data);
-          console.log(res.data.data.length);
+          // console.log(res.data.data.length);
         })
         .catch(error => {
           Notification.showErrorMessage(
@@ -110,9 +110,9 @@ const SearchPage = () => {
     if (searchPageType === 'post') {
       PostService.search({keyword: keyword})
         .then(res => {
-          console.log('res: ' + res.data.data);
+          // console.log('res: ' + res.data.data);
           setSearchPosts(res.data.data);
-          console.log(res.data.data.length);
+          // console.log(res.data.data.length);
         })
         .catch(error => {
           Notification.showErrorMessage('Đã xảy ra lỗi khi tìm kiếm bài viết');
@@ -120,9 +120,9 @@ const SearchPage = () => {
     } else {
       UserService.search({keyword: keyword})
         .then(res => {
-          console.log('res: ' + res.data.data);
+          // console.log('res: ' + res.data.data);
           setSearchUsers(res.data.data);
-          console.log(res.data.data.length);
+          // console.log(res.data.data.length);
         })
         .catch(error => {
           Notification.showErrorMessage(

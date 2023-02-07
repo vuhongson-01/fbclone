@@ -86,9 +86,11 @@ const HomePageComponent = ({navigation}) => {
     });
   };
 
-  handlePostDetail = id => {
+  handlePostDetail = (post, avatar, username) => {
     navigation.navigate('DetailPost', {
-      postId: id,
+      post: post,
+      avatar: avatar,
+      username: username,
     });
   };
 
@@ -179,8 +181,8 @@ const HomePageComponent = ({navigation}) => {
             />
             <ToolBar />
             {feeds.length > 0 &&
-              feeds.map(item => (
-                <View key={item._id}>
+              feeds.map((item, idx) => (
+                <View key={idx}>
                   <Feed
                     id={item._id}
                     described={item.described ? item.described : ''}
