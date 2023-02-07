@@ -181,6 +181,7 @@ const Feed = ({
       .catch(err => console.log(err));
   };
 
+  console.log(videos);
   return (
     <>
       <View style={styles.Container}>
@@ -367,7 +368,9 @@ const Feed = ({
                 />
               </View>
               <Text style={styles.TextCount}>
-                {likes.length + bonus} lượt thích
+                {likes.length + bonus > 0
+                  ? likes.length + bonus + ' lượt thích'
+                  : ''}
               </Text>
             </View>
             <TouchableOpacity onPress={() => handleCommentPress(id)}>

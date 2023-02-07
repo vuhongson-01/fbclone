@@ -19,7 +19,7 @@ import {COLOR, httpStatus} from '../../constants/constants';
 import ChatService from '../../helper/services/ChatService';
 
 const Chats = ({navigation, route}) => {
-  const {friend} = route.params;
+  const {friend} = !!route.params ? route.friend : '';
   const [chatList, setChatList] = useState([]);
   const socket = io(`http://localhost:8000`, {autoConnect: false});
 
