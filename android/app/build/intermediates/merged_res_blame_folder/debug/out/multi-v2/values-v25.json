@@ -4,7 +4,7 @@
             "outputFile": "com.facebook.app-mergeDebugResources-28:/values-v25/values-v25.xml",
             "map": [
                 {
-                    "source": "/Users/vuhongsonchv1619gmail.com/.gradle/caches/transforms-3/892bf90dd22489c729bd09d5a78c2e0f/transformed/appcompat-1.4.1/res/values-v25/values-v25.xml",
+                    "source": "C:\\Users\\thien\\.gradle\\caches\\transforms-3\\892bf90dd22489c729bd09d5a78c2e0f\\transformed\\appcompat-1.4.1\\res\\values-v25\\values-v25.xml",
                     "from": {
                         "startLines": "2,3,4,6",
                         "startColumns": "4,4,4,4",
